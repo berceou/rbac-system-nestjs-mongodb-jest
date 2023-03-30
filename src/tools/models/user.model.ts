@@ -1,20 +1,23 @@
-import { AuditModel } from './audit.model';
+import { Audit } from './audit.model';
 import * as mongoose from 'mongoose';
-import { RoleModel } from './role.model';
+import { Role } from './role.model';
 
-export class UserModel {
+export class User {
   id: string;
   name: string;
-  surname: string;
   email: string;
   password: string;
-  audit: AuditModel;
-  role: RoleModel;
+  audit: Audit;
+  role: Role;
+}
+
+export interface IAuthenticate {
+  readonly user: User;
+  readonly token: string;
 }
 
 export const UserSchema = new mongoose.Schema({
   name: { type: String, required: [true, 'User name is required'] },
-  surname: { type: String },
   email: {
     type: String,
     lowercase: true,

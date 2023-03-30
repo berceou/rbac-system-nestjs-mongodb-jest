@@ -1,5 +1,5 @@
-export enum RoleModel {
-  Admin = 'admin',
-  User = 'user',
-  StoreManager = 'storeManager',
+export enum Role {
+  globalAdmin = 'Global Admin',
+  normalUser = 'Normal User',
+  storeManager = 'Store Manager',
 }
