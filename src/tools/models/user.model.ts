@@ -9,14 +9,18 @@ export class UserModel {
   email: string;
   password: string;
   audit: AuditModel;
-  roles: RoleModel[];
+  roles: RoleModel;
 }
 
 export const UserSchema = new mongoose.Schema({
-  name: String,
-  surname: String,
-  email: String,
-  password: String,
-  audit: Object,
-  roles: Array,
+  name: { type: String, required: [true, 'User name is required'] },
+  surname: { type: String },
+  email: {
+    type: String,
+    lowercase: true,
+    required: [true, 'User Email address is required'],
+  },
+  password: { type: String, required: [true, 'User password is required'] },
+  audit: { type: Object },
+  roles: { type: String, required: [true, 'User role is required'] },
 });

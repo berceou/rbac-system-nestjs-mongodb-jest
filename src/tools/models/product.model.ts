@@ -9,9 +9,9 @@ export class ProductModel {
 }
 
 export const ProductSchema = new mongoose.Schema({
-  id: String,
-  name: String,
-  price: Number,
-  description: String,
-  stock: Number,
+  id: { type: String, required: [true, 'Product id is required'] },
+  name: { type: String, required: [true, 'Product name is required'] },
+  price: { type: Number, required: [true, 'Product price is required'] },
+  description: { type: String },
+  stock: { type: Number, required: [true, 'Product stock is required'] },
 });

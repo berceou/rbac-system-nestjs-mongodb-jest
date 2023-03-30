@@ -6,6 +6,6 @@ export class StoreModel {
 }
 
 export const StoreSchema = new mongoose.Schema({
-  id: String,
+  id: { type: String, required: [true, 'Store id is required'] },
   name: String,
 });
