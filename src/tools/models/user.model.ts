@@ -9,7 +9,7 @@ export class UserModel {
   email: string;
   password: string;
   audit: AuditModel;
-  roles: RoleModel;
+  role: RoleModel;
 }
 
 export const UserSchema = new mongoose.Schema({
@@ -22,5 +22,5 @@ export const UserSchema = new mongoose.Schema({
   },
   password: { type: String, required: [true, 'User password is required'] },
   audit: { type: Object },
-  roles: { type: String, required: [true, 'User role is required'] },
+  role: { type: String, required: [true, 'User role is required'] },
 });
