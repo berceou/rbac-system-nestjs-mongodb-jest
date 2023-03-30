@@ -1,4 +1,4 @@
-import { ProductModel } from 'src/tools/models/product.model';
+import { Product } from 'src/tools/models/product.model';
 import {
   Controller,
   Post,
@@ -10,36 +10,41 @@ import {
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ProductCreateDto, ProductUpdateDto } from 'src/tools/dtos/product.dto';
+import { Role } from 'src/tools/models/role.model';
+import { Roles } from 'src/roles/roles.decorator';
 
 @Controller('product')
 export class ProductController {
   constructor(private productService: ProductService) {}
 
   @Post()
-  async createProduct(@Body() body: ProductCreateDto): Promise<ProductModel> {
+  @Roles(Role.storeManager)
+  async createProduct(@Body() body: ProductCreateDto): Promise<Product> {
     return await this.productService.create(body);
   }
 
   @Get()
-  async getAllProducts(): Promise<ProductModel[]> {
+  async getAllProducts(): Promise<Product[]> {
     return await this.productService.getAll();
   }
 
   @Get(':id')
-  async getProduct(@Param() params): Promise<ProductModel> {
+  async getProduct(@Param() params): Promise<Product> {
     return await this.productService.getById(params.id);
   }
 
   @Put(':id')
+  @Roles(Role.storeManager)
   async updateProduct(
     @Param('id') id: string,
     @Body() productUpdateDto: ProductUpdateDto,
-  ): Promise<ProductModel> {
+  ): Promise<Product> {
     return await this.productService.update(id, productUpdateDto);
   }
 
   @Delete(':id')
-  async removeProduct(@Param('id') id: string): Promise<ProductModel> {
+  @Roles(Role.storeManager)
+  async removeProduct(@Param('id') id: string): Promise<Product> {
     return await this.productService.delete(id);
   }
 }

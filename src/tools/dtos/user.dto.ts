@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { RoleModel } from '../models/role.model';
+import { Role } from '../models/role.model';
 import { IsNotEmpty, Length, IsEmail } from 'class-validator';
 
 export class UserCreateDto {
@@ -8,13 +8,11 @@ export class UserCreateDto {
   @Length(2, 20)
   name: string;
   @ApiProperty()
-  surname: string;
-  @ApiProperty()
   password: string;
   @ApiProperty()
   @IsEmail()
   email: string;
-  role: RoleModel;
+  role: Role;
 }
 
 export class UserLoginDto {
@@ -30,7 +28,4 @@ export class UserUpdateDto {
   @IsNotEmpty()
   @Length(2, 20)
   name: string;
-  @ApiProperty()
-  @Length(2, 20)
-  surname: string;
 }
