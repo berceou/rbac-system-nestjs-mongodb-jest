@@ -7,6 +7,10 @@ import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
 import { StoreModule } from './store/store.module';
 import { LibsModule } from 'libs/libs.module';
+import { AbilityModule } from './ability/ability.module';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './roles/roles.guard';
+import { LoginModule } from './login/login.module';
 
 @Module({
   imports: [
@@ -16,8 +20,16 @@ import { LibsModule } from 'libs/libs.module';
     ProductModule,
     StoreModule,
     LibsModule,
+    AbilityModule,
+    LoginModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ],
 })
 export class AppModule {}

@@ -16,15 +16,3 @@ export class ProductCreateDto {
   stock: number;
   description: string;
 }
-export class ProductUpdateDto {
-  @ApiProperty()
-  @IsNotEmpty()
-  @Min(1)
-  @Max(500000)
-  price: number;
-  @ApiProperty()
-  @IsNotEmpty()
-  @Min(1)
-  @Max(200)
-  stock: number;
-}

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { UserCreateDto, UserUpdateDto } from 'src/tools/dtos/user.dto';
+import { UserCreateDto } from 'src/tools/dtos/user.dto';
 import { User } from 'src/tools/models/user.model';
 import * as mongoose from 'mongoose';
 import { ResourceService } from 'libs/services/resource.service';
@@ -10,11 +10,7 @@ const saltRounds = 10;
 const hashtext = process.env.HASH_TEXT;
 
 @Injectable()
-export class UserService extends ResourceService<
-  User,
-  UserCreateDto,
-  UserUpdateDto
-> {
+export class UserService extends ResourceService<User, UserCreateDto> {
   constructor(@InjectModel('User') mongoUser: mongoose.Model<User>) {
     super(mongoUser);
   }
