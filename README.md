@@ -43,7 +43,7 @@ To run this project, you will need to add the environment variable `DB_URI` whic
 
 ## Documentation
 
-[Documentation](https://linktodocumentation)
+After runnin the project (`npm run start:dev`) , you can access swagger with http://localhost:3000/api in the browser
 
 ## Run Locally
 
@@ -75,3 +75,5 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+
