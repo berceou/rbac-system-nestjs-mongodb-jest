@@ -1,4 +1,3 @@
-import { Audit } from './audit.model';
 import * as mongoose from 'mongoose';
 import { Role } from './role.model';
 
@@ -7,13 +6,9 @@ export class User {
   name: string;
   email: string;
   password: string;
-  audit: Audit;
   role: Role;
-}
-
-export interface IAuthenticate {
-  readonly user: User;
-  readonly token: string;
+  isAdmin: boolean;
+  isSM: boolean;
 }
 
 export const UserSchema = new mongoose.Schema({
@@ -26,4 +21,6 @@ export const UserSchema = new mongoose.Schema({
   password: { type: String, required: [true, 'User password is required'] },
   audit: { type: Object },
   role: { type: String, required: [true, 'User role is required'] },
+  isAdmin: { type: Boolean },
+  isSM: { type: Boolean },
 });

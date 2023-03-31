@@ -17,15 +17,7 @@ export class UserCreateDto {
 
 export class UserLoginDto {
   @ApiProperty()
-  @IsEmail()
-  email: string;
-  @ApiProperty()
   password: string;
-}
-
-export class UserUpdateDto {
   @ApiProperty()
-  @IsNotEmpty()
-  @Length(2, 20)
-  name: string;
+  role: string;
 }

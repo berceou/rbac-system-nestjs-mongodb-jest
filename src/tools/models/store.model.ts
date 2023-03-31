@@ -10,5 +10,5 @@ export class Store {
 export const StoreSchema = new mongoose.Schema({
   id: { type: String, required: [true, 'Store id is required'] },
   name: String,
-  products: Product[];
+  products: Array,
 });
